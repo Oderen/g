@@ -7,14 +7,11 @@ const DEBOUNCE_DELAY = 300;
 
 const inputValue = document.querySelector('input#search-box');
 
-inputValue.addEventListener('input', (e) => {
-    e.preventDefault();
+inputValue.addEventListener('input', debounce((e) => {
     console.log(e.currentTarget.value);
 
-    debounce(getCountry('Poland'), DEBOUNCE_DELAY);
-});
- 
-
+    getCountry('Poland')}, DEBOUNCE_DELAY)
+);
 
 
 
