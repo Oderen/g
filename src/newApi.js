@@ -11,8 +11,11 @@ export default class newApi {
   fetchCountries(name) {
         this.name = name;
 
-      fetch(`https://restcountries.com/v3.1/name/${this.name}`)
-        .then(response => response.json()).then(data => this.showingCountries(data))
+    fetch(`https://restcountries.com/v3.1/name/${this.name}`)
+      .then(response => response.json()).then(data => {
+        console.log('this.showingCountries', this.showingCountries(data));
+        this.showingCountries(data);
+      })
         .catch(this.onFailedSearch());
   };
   
@@ -20,10 +23,13 @@ export default class newApi {
     if (data.length > 10) {
             return Notiflix.Notify.info("Too many matches found. Please enter a more specific name.");
           }
-          else if (data.length >= 2 && data.length <= 10) {
+    else if (data.length >= 2 && data.length <= 10) {
+             console.log('Якщо є 2-10 країн', this.markUpForTwoTenCountries(data));
             return this.ul.insertAdjacentHTML('beforeend', this.markUpForTwoTenCountries(data));
           }
-          else if (data.length === 1) {
+    else if (data.length === 1) {
+            console.log('Якщо є 2-10 країн', this.markUpOneCountry(data));
+      
             this.div.insertAdjacentHTML('beforeend', this.markUpOneCountry(data));
             document.querySelector('.list').style.listStyle = 'none';
             return;
@@ -58,3 +64,7 @@ export default class newApi {
     return Notiflix.Notify.failure("Oops, there is no country with that name");
   }
 };
+
+// 2 issues
+// 1. Why catch work when promise returns suceed answer
+// 2 Why trim() doesn't work
