@@ -19,7 +19,8 @@ refs.inputValue.addEventListener('input', debounce((e) => {
     refs.div.innerHTML = '';
     refs.ul.innerHTML = '';
 
-    newApi.fetchCountries(`${e.target.value}`)}, DEBOUNCE_DELAY)
+    newApi.fetchCountries(`${e.target.value}`);
+}, DEBOUNCE_DELAY)
 );
 
 
