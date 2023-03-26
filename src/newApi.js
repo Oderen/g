@@ -13,8 +13,7 @@ export default class newApi {
 
     fetch(`https://restcountries.com/v3.1/name/${this.name}`)
       .then(response => response.json()).then(data => {
-        console.log('this.showingCountries', this.showingCountries(data));
-        this.showingCountries(data);
+        console.log('this.showingCountries', this.showingCountries(data))
       })
         .catch(this.onFailedSearch());
   };
@@ -30,9 +29,9 @@ export default class newApi {
     else if (data.length === 1) {
             console.log('Якщо є 2-10 країн', this.markUpOneCountry(data));
       
-            this.div.insertAdjacentHTML('beforeend', this.markUpOneCountry(data));
+            const markUp = this.div.insertAdjacentHTML('beforeend', this.markUpOneCountry(data));
             document.querySelector('.list').style.listStyle = 'none';
-            return;
+            return markUp;
           };
   }
   
