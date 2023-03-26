@@ -15,7 +15,7 @@ export default class newApi {
       .then(response => response.json()).then(data => {
         console.log('this.showingCountries', this.showingCountries(data))
       })
-        .catch(this.onFailedSearch());
+      .catch(this.onFailedSearch());
   };
   
   showingCountries(data) {         
