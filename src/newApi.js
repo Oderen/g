@@ -14,7 +14,6 @@ export default class newApi {
     fetch(`https://restcountries.com/v3.1/name/${this.name}`)
       .then(response => response.json()).then(data => {
         console.log('this.showingCountries', this.showingCountries(data));
-        this.showingCountries(data);
       })
         .catch(this.onFailedSearch());
   };
