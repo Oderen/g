@@ -11,9 +11,10 @@ export default class newApi {
   fetchCountries(name) {
         this.name = name;
 
-    fetch(`https://restcountries.com/v3.1/name/${this.name}`)
+    return fetch(`https://restcountries.com/v3.1/name/${this.name}`)
       .then(response => response.json()).then(data => {
-        console.log('this.showingCountries', this.showingCountries(data))
+        this.showingCountries(data);
+        // console.log(this.showingCountries(data));
       })
       .catch(this.onFailedSearch());
   };
@@ -23,16 +24,13 @@ export default class newApi {
             return Notiflix.Notify.info("Too many matches found. Please enter a more specific name.");
           }
     else if (data.length >= 2 && data.length <= 10) {
-             console.log('Якщо є 2-10 країн', this.markUpForTwoTenCountries(data));
             return this.ul.insertAdjacentHTML('beforeend', this.markUpForTwoTenCountries(data));
           }
     else if (data.length === 1) {
-            console.log('Якщо є 2-10 країн', this.markUpOneCountry(data));
-      
             const markUp = this.div.insertAdjacentHTML('beforeend', this.markUpOneCountry(data));
             document.querySelector('.list').style.listStyle = 'none';
             return markUp;
-          };
+    };
   };
   
   markUpOneCountry(data) {
