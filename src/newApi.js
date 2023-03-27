@@ -33,7 +33,7 @@ export default class newApi {
             document.querySelector('.list').style.listStyle = 'none';
             return markUp;
           };
-  }
+  };
   
   markUpOneCountry(data) {
     return data.map(data => `<h2>
@@ -61,7 +61,7 @@ export default class newApi {
   
   onFailedSearch() {    
     return Notiflix.Notify.failure("Oops, there is no country with that name");
-  }
+  };
 };
 
 // 2 issues
