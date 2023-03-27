@@ -11,7 +11,7 @@ export default class newApi {
   fetchCountries(name) {
         this.name = name;
 
-    fetch(`https://restcountries.com/v3.1/name/${this.name}`)
+    return fetch(`https://restcountries.com/v3.1/name/${this.name}`)
       .then(response => response.json()).then(data => {
         console.log('this.showingCountries', this.showingCountries(data))
       })
