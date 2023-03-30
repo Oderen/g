@@ -31,6 +31,7 @@ export default class newApi {
             document.querySelector('.list').style.listStyle = 'none';
             return markUp;
     };
+    return;
   };
   
   markUpOneCountry(data) {
@@ -61,7 +62,3 @@ export default class newApi {
     return Notiflix.Notify.failure("Oops, there is no country with that name");
   };
 };
-
-// 2 issues
-// 1. Why catch work when promise returns suceed answer
-// 2 Why trim() doesn't work
