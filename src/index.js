@@ -20,7 +20,7 @@ refs.inputValue.addEventListener('input', debounce((e) => {
     refs.div.innerHTML = '';
     refs.ul.innerHTML = '';
  
-    newApi.fetchCountries(e.target.value.trim()).catch(Notiflix.Notify.failure("Oops, there is no country with that name"));
+    newApi.fetchCountries(e.target.value.trim());
 }, DEBOUNCE_DELAY)
 );
 
