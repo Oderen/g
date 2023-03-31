@@ -2,6 +2,7 @@
 import './css/styles.css';
 var debounce = require('lodash.debounce');
 import newApiSevice from './newApi';
+import Notiflix from 'notiflix';
 
 // Vars
 const newApi = new newApiSevice();
@@ -18,9 +19,8 @@ const refs = {
 refs.inputValue.addEventListener('input', debounce((e) => {
     refs.div.innerHTML = '';
     refs.ul.innerHTML = '';
-
-    newApi.fetchCountries(`${e.target.value}`);
+ 
+    newApi.fetchCountries(e.target.value.trim()).catch(Notiflix.Notify.failure("Oops, there is no country with that name"));
 }, DEBOUNCE_DELAY)
 );
-
 

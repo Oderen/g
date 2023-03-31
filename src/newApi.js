@@ -14,9 +14,7 @@ export default class newApi {
     return fetch(`https://restcountries.com/v3.1/name/${this.name}`)
       .then(response => response.json()).then(data => {
         this.showingCountries(data);
-        // console.log(this.showingCountries(data));
-      })
-      .catch(this.onFailedSearch());
+      });
   };
   
   showingCountries(data) {         
@@ -31,6 +29,7 @@ export default class newApi {
             document.querySelector('.list').style.listStyle = 'none';
             return markUp;
     };
+    return;
   };
   
   markUpOneCountry(data) {
@@ -56,12 +55,4 @@ export default class newApi {
     <img width ='70' height='50' src='${data.flags.svg}'>
     ${data.name.official}</h5>`).join(''); 
   };
-  
-  onFailedSearch() {    
-    return Notiflix.Notify.failure("Oops, there is no country with that name");
-  };
 };
-
-// 2 issues
-// 1. Why catch work when promise returns suceed answer
-// 2 Why trim() doesn't work
