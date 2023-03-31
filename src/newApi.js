@@ -29,7 +29,7 @@ export default class newApi {
             document.querySelector('.list').style.listStyle = 'none';
             return markUp;
     };
-    return;
+    return Notiflix.Notify.failure("Oops, there is no country with that name");
   };
   
   markUpOneCountry(data) {
@@ -56,3 +56,4 @@ export default class newApi {
     ${data.name.official}</h5>`).join(''); 
   };
 };
+
