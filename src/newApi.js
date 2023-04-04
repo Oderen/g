@@ -8,13 +8,18 @@ export default class newApi {
         this.div = document.querySelector('.country-info');
   };
 
-  fetchCountries(name) {
-        this.name = name;
+  async fetchCountries(name) {
+    try { 
+    this.name = name;
 
-    return fetch(`https://restcountries.com/v3.1/name/${this.name}`)
-      .then(response => response.json()).then(data => {
-        this.showingCountries(data);
-      });
+      const response = await fetch(`https://restcountries.com/v3.1/name/${this.name}?fields=name,capital,population,languages,flags`);
+      const parsedResponse = await response.json();
+      console.log(parsedResponse);
+      return this.showingCountries(parsedResponse);
+
+    } catch (e) {
+      console.log('Problem: ', e.message);
+    }
   };
   
   showingCountries(data) {         
@@ -56,4 +61,5 @@ export default class newApi {
     ${data.name.official}</h5>`).join(''); 
   };
 };
+
 
